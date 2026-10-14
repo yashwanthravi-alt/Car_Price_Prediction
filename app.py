@@ -20,7 +20,10 @@ except FileNotFoundError:
 
 model = bundle["model"]
 features = bundle["features"]
-car_options = bundle["categorical_options"]
+cat_options = bundle.get(
+    "cat_options",
+    bundle.get("categorical_options", {})
+)
 num_defaults = bundle["numeric_defaults"]
 num_bounds = bundle["numeric_bounds"]
 st.caption(f"Selected model: {bundle['model_name']}")
